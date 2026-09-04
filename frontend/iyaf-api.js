@@ -5,7 +5,7 @@
  Example:
  const API_BASE_URL = "https://iyaf-api.onrender.com";
 */
-const API_BASE_URL = "https://REPLACE-WITH-YOUR-IYAF-BACKEND.onrender.com";
+const API_BASE_URL = "https://imperial-youths-advocates-federation.onrender.com";
 
 async function iyafAPI(path, options = {}) {
   const response = await fetch(`${API_BASE_URL}${path}`, {
