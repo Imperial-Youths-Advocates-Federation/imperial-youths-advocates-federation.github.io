@@ -1,0 +1,13 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IYAF Email Verification</title></head>
+<body><main><h1>IYAF Email Verification</h1><p id="status">Verifying...</p></main>
+<script src="iyaf-api.js"></script>
+<script>
+const token=new URLSearchParams(location.search).get("token");
+if(!token){status.textContent="Missing verification token."}
+else{
+ fetch(`${API_BASE_URL}/api/auth/verify?token=${encodeURIComponent(token)}`,{credentials:"include"})
+ .then(r=>r.json().then(x=>({ok:r.ok,x}))).then(({ok,x})=>status.textContent=ok?x.message:(x.detail||"Verification failed."))
+ .catch(()=>status.textContent="Could not contact the server.");
+}
+</script></body></html>
